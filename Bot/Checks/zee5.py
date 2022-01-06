@@ -1,5 +1,5 @@
 import requests
-from message import Sendmessage, Editmessage, logger
+from message import logger, Sendmessage, Editmessage
 from datetime import date
 
 head = {
@@ -43,15 +43,18 @@ def zee_helper(chat_id, combo):
     subs_url = 'https://subscriptionapi.zee5.com/v1/subscription?translation=en&country=IN&include_all=flase'
     response1 = session_requests.get(subs_url, headers=head2)
     result1 = response1.json()
+    # print(result1)
     if result1 == []:
-        expire_text = f'<b>Expired Combo ❌</b>\n<b>Site: Voot</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Expired</b>'
+        expire_text = f'<b>Expired Combo ❌</b>\n<b>Site: Zee5</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Expired</b>'
         Editmessage(chat_id, expire_text, status)
         return
     timedioint = result1[0]["subscription_end"].split('T')[0]
     sub2split = timedioint.split('-')
     trial = date(int(sub2split[0]), int(sub2split[1]), int(sub2split[2])) - date.today()
-    Pack_name = result1[0]['subscription_plan']['description']
+    Pack_name = result1[0]['subscription_plan']['title']
+    pack_price = str(result1[0]['subscription_plan']['price'])
     Pack_recur = result1[0]['recurring_enabled']
     Pack_pyed = result1[0]['payment_provider']
-    pro_message = f'<b>🌟 Hit Combo 💫</b>\n<b>Site: Zee5</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Premium\nPlan: {Pack_name}\nDays Left: {trial.days} Days\nPayment: {Pack_pyed}\nRecurring: {Pack_recur}</b>'
+    pro_message = f'<b>🌟 Hit Combo 💫</b>\n<b>Site: Zee5</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Plan: {Pack_name}\nPrice: {pack_price} INR\nDays Left: {trial.days} Days\nPayment: {Pack_pyed}\nRecurring: {Pack_recur}</b>'
+    # print(pro_message)
     Editmessage(chat_id, pro_message, status)
