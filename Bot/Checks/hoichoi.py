@@ -29,11 +29,11 @@ def hoichoi_helper(chat_id, combo):
     if response.status_code != 200:
         code=result['code']
         messg = result['error']
-        text = f'<b>Bad Combo ❌</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Code: {code}\nMessage: {messg}\nSite: Hoichoi</b>'
+        text = f'<b>Bad Combo ❌ Join Here @PremiumNetworkTeam</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Code: {code}\nMessage: {messg}\nSite: Hoichoi</b>'
         Editmessage(chat_id, text, status)
         return
     elif result['isSubscribed'] == False:
-        free_text = f'<b>Expired Combo ❌</b>\n<b>Site: Altbalaji</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Expired/Free</b>'
+        free_text = f'<b>Expired Combo ❌</b>\n<b>Site: Altbalaji</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Expired/Free Join Here @PremiumNetworkTeam</b>'
         Editmessage(chat_id, free_text, status)
         return
     user_token = result['authorizationToken']
