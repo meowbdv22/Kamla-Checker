@@ -29,7 +29,7 @@ def hoichoi_helper(chat_id, combo):
     if response.status_code != 200:
         code=result['code']
         messg = result['error']
-        text = f'<b>Bad Combo ❌ Join Here @PremiumNetworkTeam</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Code: {code}\nMessage: {messg}\nSite: Hoichoi</b>'
+        text = f'<b>Bad Combo ❌</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Code: {code}\nMessage: {messg}\nSite: Hoichoi Join Here @PremiumNetworkTeam</b>'
         Editmessage(chat_id, text, status)
         return
     elif result['isSubscribed'] == False:
@@ -51,7 +51,7 @@ def hoichoi_helper(chat_id, combo):
     timedioint = result2["subscriptionInfo"]["subscriptionEndDate"].split('T')[0]
     sub2split = timedioint.split('-')
     trial = date(int(sub2split[0]), int(sub2split[1]), int(sub2split[2])) - date.today()
-    pro_message = f'<b>🌟 Hit Combo 💫</b>\n<b>Site: Hoichoi</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Premium\nPlan: {result2["subscriptionPlanInfo"]["name"]}\nDays Left: {trial.days}\nRecurring: {result2["subscriptionPlanInfo"]["renewable"]}</b>'
+    pro_message = f'<b>🌟 Hit Combo 💫</b>\n<b>Site: Hoichoi</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Premium\nPlan: {result2["subscriptionPlanInfo"]["name"]}\nDays Left: {trial.days}\nRecurring: {result2["subscriptionPlanInfo"]["renewable"]}[Bot By @BisnuRay]</b>'
     Editmessage(chat_id, pro_message, status)
     return
 
