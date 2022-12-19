@@ -17,7 +17,7 @@ startmessage = [[
 		),
         InlineKeyboardButton(
 			"DEV 👷🏻",
-			url='https://t.me/Amalbiju154'
+			url='https://t.me/errorformat'
 		)
         ]]
 
