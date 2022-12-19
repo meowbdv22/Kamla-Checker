@@ -29,11 +29,11 @@ def hoichoi_helper(chat_id, combo):
     if response.status_code != 200:
         code=result['code']
         messg = result['error']
-        text = f'<b>Bad Combo ❌</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Code: {code}\nMessage: {messg}\nSite: Hoichoi \nJoin Here @PremiumNetworkTeam</b>'
+        text = f'<b>Bad Combo ❌</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Code: {code}\nMessage: {messg}\nSite: Hoichoi \nJoin Here @telekit152</b>'
         Editmessage(chat_id, text, status)
         return
     elif result['isSubscribed'] == False:
-        free_text = f'<b>Expired Combo ❌</b>\n<b>Site: Altbalaji</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Expired/Free<b/>\n<b>Join Here @PremiumNetworkTeam</b>'
+        free_text = f'<b>Expired Combo ❌</b>\n<b>Site: Altbalaji</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Expired/Free<b/>\n<b>Join Here @telekit152</b>'
         Editmessage(chat_id, free_text, status)
         return
     user_token = result['authorizationToken']
@@ -51,7 +51,7 @@ def hoichoi_helper(chat_id, combo):
     timedioint = result2["subscriptionInfo"]["subscriptionEndDate"].split('T')[0]
     sub2split = timedioint.split('-')
     trial = date(int(sub2split[0]), int(sub2split[1]), int(sub2split[2])) - date.today()
-    pro_message = f'<b>🌟 Hit Combo 💫</b>\n<b>Site: Hoichoi</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Premium\nPlan: {result2["subscriptionPlanInfo"]["name"]}\nDays Left: {trial.days}\nRecurring: {result2["subscriptionPlanInfo"]["renewable"]}\n[Bot By @BisnuRay]</b>'
+    pro_message = f'<b>🌟 Hit Combo 💫</b>\n<b>Site: Hoichoi</b>\n<b>Combo: </b><code>{combo}</code>\n<b>Status: Premium\nPlan: {result2["subscriptionPlanInfo"]["name"]}\nDays Left: {trial.days}\nRecurring: {result2["subscriptionPlanInfo"]["renewable"]}\n[Bot By @errorformat]</b>'
     Editmessage(chat_id, pro_message, status)
     return
 
